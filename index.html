@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <title>PRIVY Network — Your Network. Your Freedom.</title>
+  <meta name="description" content="PRIVY is an independent Layer 1 blockchain built for an open, accessible, and decentralized digital ecosystem.">
+
+  <style>
+    :root {
+      --bg: #080b14;
+      --panel: #101625;
+      --text: #f4f6fb;
+      --muted: #9ba7bb;
+      --accent: #8b7cff;
+      --cyan: #55d6d0;
+      --border: rgba(255,255,255,.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,11,20,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 25px;
+      font-weight: 850;
+      letter-spacing: 3px;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .hero {
+      min-height: 650px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 100px 0;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(117,98,255,.2), transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(54,190,190,.09), transparent 45%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(139,124,255,.4);
+      color: #c1baff;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 9vw, 92px);
+      line-height: 1.05;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      background: linear-gradient(100deg, #a99cff, #55d6d0);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 35px;
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(100deg, #8271ff, #5d9ffb);
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    section { padding: 95px 0; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 5vw, 44px);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .card .number {
+      color: var(--cyan);
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 { font-size: 20px; margin-bottom: 10px; }
+
+    .card p { color: var(--muted); font-size: 14px; }
+
+    .technology {
+      background: #0c1120;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tech-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .tech-layout h2 {
+      font-size: clamp(30px, 5vw, 43px);
+      margin-bottom: 20px;
+    }
+
+    .tech-layout p { color: var(--muted); }
+
+    .tech-list { display: grid; gap: 14px; }
+
+    .tech-item {
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 12px;
+    }
+
+    .tech-item strong { display: block; margin-bottom: 4px; }
+    .tech-item span { color: var(--muted); font-size: 13px; }
+
+    .token-box {
+      border: 1px solid rgba(139,124,255,.35);
+      background: linear-gradient(135deg, #17152d, #101b28);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .token-box h3 { font-size: 30px; margin-bottom: 8px; }
+    .token-box p { color: var(--muted); }
+
+    .token-symbol {
+      font-size: 13px;
+      color: var(--cyan);
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    .roadmap {
+      max-width: 760px;
+      margin: auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .roadmap-item {
+      border-left: 2px solid var(--accent);
+      padding: 5px 0 5px 25px;
+    }
+
+    .roadmap-item h3 { margin-bottom: 5px; }
+    .roadmap-item p { color: var(--muted); font-size: 14px; }
+
+    .closing {
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(117,98,255,.16), transparent 65%);
+    }
+
+    .closing h2 {
+      font-size: clamp(32px, 6vw, 54px);
+      margin-bottom: 15px;
+    }
+
+    .closing p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .tech-layout { grid-template-columns: 1fr; }
+      .hero { min-height: 570px; }
+      h1 { letter-spacing: -2px; }
+      section { padding: 70px 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#">PRIVY<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#technology">Technology</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Independent Layer 1 Network</div>
+      <h1>Your Network.<br><span>Your Freedom.</span></h1>
+      <p>
+        A new foundation for an open digital world.
+        PRIVY is designed as an independent blockchain network
+        built for accessible applications, decentralized infrastructure,
+        and a growing community.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#about">Explore PRIVY</a>
+        <a class="btn btn-secondary" href="#technology">Discover Technology</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Built on Independence</h2>
+        <p>
+          PRIVY aims to provide its own network infrastructure,
+          consensus, validators, and native transaction system.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="number">01 / NETWORK</div>
+          <h3>Independent Blockchain</h3>
+          <p>
+            An independent Layer 1 architecture with its own
+            consensus and validator network.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">02 / ACCESS</div>
+          <h3>EVM Compatible</h3>
+          <p>
+            Designed to support Ethereum-compatible smart contracts
+            and familiar developer tools.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">03 / COMMUNITY</div>
+          <h3>Open Participation</h3>
+          <p>
+            A network vision centered on community participation,
+            transparency, and decentralized development.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="technology" id="technology">
+    <div class="container tech-layout">
+      <div>
+        <div class="eyebrow">Technology</div>
+        <h2>A foundation designed to grow.</h2>
+        <p>
+          PRIVY's proposed architecture combines established
+          blockchain technologies to create a flexible foundation
+          for decentralized applications.
+        </p>
+      </div>
+
+      <div class="tech-list">
+        <div class="tech-item">
+          <strong>Cosmos SDK</strong>
+          <span>Modular blockchain application framework.</span>
+        </div>
+        <div class="tech-item">
+          <strong>CometBFT</strong>
+          <span>Consensus and network security infrastructure.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Cosmos EVM</strong>
+          <span>Ethereum-compatible execution environment.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ecosystem">
+    <div class="container">
+      <div class="section-heading">
+        <h2>The PRIVY Ecosystem</h2>
+        <p>
+          A connected digital economy with room for different
+          applications and services.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="number">NATIVE ASSET</div>
+          <h3>PRIVY</h3>
+          <p>
+            The proposed native asset for network fees,
+            staking, and participation in the network.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">STABLE ASSET</div>
+          <h3>PRIS</h3>
+          <p>
+            A planned ecosystem stable-value asset.
+            Reserve, redemption, and compliance mechanisms
+            must be established before launch.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">APPLICATIONS</div>
+          <h3>Built for Utility</h3>
+          <p>
+            Future applications may cover payments,
+            services, games, finance, and community tools.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Building Step by Step</h2>
+        <p>
+          A proposed development path. Each milestone depends
+          on testing, security, and available resources.
+        </p>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-item">
+          <h3>01 — Foundation</h3>
+          <p>Core architecture, chain configuration, and development environment.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3>02 — Internal Testnet</h3>
+          <p>Local validators, transactions, staking, and smart-contract testing.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3>03 — Public Testnet</h3>
+          <p>Community testing, infrastructure checks, and security improvements.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3>04 — Mainnet Preparation</h3>
+          <p>Genesis validation, validator readiness, audits, and operational planning.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3>05 — Mainnet</h3>
+          <p>Launch when the network is technically and operationally ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="container">
+      <h2>The network starts here.</h2>
+      <p>Independent by design. Open to possibility.</p>
+      <a class="btn btn-primary" href="#about">Discover PRIVY</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong>PRIVY NETWORK</strong> — Your Network. Your Freedom.</div>
+    <div>© 2026 PRIVY Network. Project under development.</div>
+  </div>
+</footer>
+
+</body>
+</html>
